@@ -45,7 +45,8 @@ class AddQuestion extends Component {
   }
 
   render () {
-
+    const {questionTitle, questionAnswer } = this.state
+    const isEmptyForm = questionTitle === "" || questionAnswer === ""
     return (
       <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -65,8 +66,11 @@ class AddQuestion extends Component {
             value={this.state.questionAnswer}
             onChangeText={this.handleAnswerChange}
             onBlur={Keyboard.dismiss} />
-            <TouchableOpacity style={[styles.actionButton, styles.actionButtonDark]} onPress={this.handleSubmit}>
-                <Text style={styles.actionButtonLightText}>Save Question</Text>
+            <TouchableOpacity 
+              style={isEmptyForm ? [styles.actionButton, styles.actionButtonDisabled] : [styles.actionButton, styles.actionButtonDark]} 
+              onPress={this.handleSubmit}
+              disabled={isEmptyForm}>
+                <Text style={isEmptyForm ? styles.actionButtonDisabledText : styles.actionButtonLightText}>Save Question</Text>
             </TouchableOpacity>
       </KeyboardAvoidingView>
     )

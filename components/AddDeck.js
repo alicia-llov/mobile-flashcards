@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, Keyboard, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
-import { CommonActions } from '@react-navigation/native'
+import { Text, TextInput, Keyboard, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import styles from '../utils/styles'
 import { handleSaveDeck } from '../utils/api'
@@ -31,6 +30,7 @@ class AddDeck extends Component {
   }
 
   render() {
+    const { newDeckTitle } = this.state
     return (
       <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -42,8 +42,8 @@ class AddDeck extends Component {
 				value={this.state.newDeckTitle}
 				onChangeText={this.handleTitleChange}
 				onBlur={Keyboard.dismiss} />
-				<TouchableOpacity style={[styles.actionButton, styles.actionButtonDark]} onPress={this.handleSubmit}>
-						<Text style={styles.actionButtonLightText}>Save Deck</Text>
+				<TouchableOpacity style={newDeckTitle === "" ? [styles.actionButton, styles.actionButtonDisabled] : [styles.actionButton, styles.actionButtonDark]} onPress={this.handleSubmit}>
+						<Text style={newDeckTitle === "" ? styles.actionButtonDisabledText : styles.actionButtonLightText}>Save Deck</Text>
 				</TouchableOpacity>
       </KeyboardAvoidingView>
     )

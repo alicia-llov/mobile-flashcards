@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
     width: ScreenWidth,
     height: '100%',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF'
   },
   viewTitle: {
@@ -77,7 +77,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#412234',
     borderColor: '#412234'
   },
-
+  actionButtonDisabled: {
+    backgroundColor: '#f5f5f5',
+    borderColor: '#f5f5f5'
+  },
   actionButtonCorrect: {
     backgroundColor: '#94C9A9',
     borderColor: '#94C9A9'
@@ -86,13 +89,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#FE5F55',
     borderColor: '#FE5F55'
   },
-
   actionButtonDarkText: {
     color: '#000000',
     textAlign: 'center'
   },
   actionButtonLightText: {
     color: '#ffffff',
+    textAlign: 'center'
+  },
+  actionButtonDisabledText: {
+    color: 'grey',
     textAlign: 'center'
   },
   inputTitle: {

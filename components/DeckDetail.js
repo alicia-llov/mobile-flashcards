@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Button } from 'react-native'
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import { connect } from 'react-redux'
 import { CommonActions } from '@react-navigation/native'
 import { handleDeleteDeck } from '../utils/api'
@@ -22,14 +22,14 @@ class DeckDetail extends Component {
 
     if (!deck) {
       return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
            <Text style={styles.cardTitle}>Deck could not be found</Text>
-        </View>
+        </SafeAreaView>
       )
     }
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.cardTitle}>{deck.title}</Text>
         <Text style={styles.cardSubtitle}>{deck.questions.length} cards</Text>
         <View style={styles.actionButtonContainer}>
@@ -43,7 +43,7 @@ class DeckDetail extends Component {
         <TouchableOpacity onPress={this.handleDeleteDeck}>
           <Text style={styles.textButton}>Delete Deck</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     )
   }
 }

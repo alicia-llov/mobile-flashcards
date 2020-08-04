@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import { connect } from 'react-redux'
 import { receiveData } from '../actions/index'
 import { getData } from '../utils/api'
@@ -27,28 +27,28 @@ class DeckList extends Component {
 
     if (Object.keys(data).length === 0) {
       return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Text style={styles.cardTitle}>You have no decks! Add a new deck and start playing</Text>
           <TouchableOpacity style={[styles.actionButton, styles.actionButtonDark]} onPress={() => this.props.navigation.navigate('NewDeck')}>
             <Text style={styles.actionButtonLightText}>Add Deck</Text>
-        </TouchableOpacity>
-        </View>
+          </TouchableOpacity>
+        </SafeAreaView>
       )
     }
 
     return (
-      <View>
+      <SafeAreaView style={{}}>
         {waiting
           ? loader()
           : <ScrollView contentContainerStyle={styles.scrollContainer}>
-            {Object.values(data).map((entry) => (
-              <TouchableOpacity key={entry.title} style={styles.deckContainer} onPress={() => this.props.navigation.navigate('DeckDetail', { deckTitle: entry.title })}>
-                <Text style={styles.cardTitle}>{entry.title}</Text>
-                <Text style={styles.cardSubtitle}>{entry.questions.length} cards</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>}
-      </View>
+              {Object.values(data).map((entry) => (
+                <TouchableOpacity key={entry.title} style={styles.deckContainer} onPress={() => this.props.navigation.navigate('DeckDetail', { deckTitle: entry.title })}>
+                  <Text style={styles.cardTitle}>{entry.title}</Text>
+                  <Text style={styles.cardSubtitle}>{entry.questions.length} cards</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>}
+      </SafeAreaView>
 
     )
   }

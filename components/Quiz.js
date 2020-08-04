@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import styles from '../utils/styles'
 import Card from './Card'
 import { setLocalNotification, clearLocalNotification } from '../utils/helpers'
@@ -44,15 +44,15 @@ class Quiz extends Component {
 
     if (questions.length === 0) {
       return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Text style={styles.cardTitle}>There are no Cards in this Deck</Text>
-        </View>
+        </SafeAreaView>
       )
 		}
 		
 		if (questions[currentIndex] === undefined) {
 			return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Text style={styles.questionTitle}>Your score!</Text>
 					<Text style={styles.cardSubTitle}>Correct answers: {correctAnswers}</Text>
 					<Text style={styles.cardSubTitle}>Incorrect answers: {incorrectAnswers}</Text>
@@ -65,12 +65,12 @@ class Quiz extends Component {
             <Text style={styles.actionButtonLightText}>I'm ready to try again</Text>
           </TouchableOpacity>
         </View>
-        </View>
+        </SafeAreaView>
       )
 		}
 
     return (
-      <View style={styles.quizContainer}>
+      <SafeAreaView style={styles.quizContainer}>
         <View style={styles.quizNumbersContainer}>
           <Text styles={styles.quizNumbers}>{currentIndex + 1} / {totalQuestions}</Text>
         </View>
@@ -85,7 +85,7 @@ class Quiz extends Component {
             <Text style={styles.actionButtonLightText}>INCORRECT</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </SafeAreaView>
     )
   }
 }
