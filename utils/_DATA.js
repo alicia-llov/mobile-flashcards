@@ -1,5 +1,4 @@
-export const STORAGE_KEY = '@FLASHCARDS:npi1'
-// @FLASHCARDS:data
+export const STORAGE_KEY = '@FLASHCARDS:data'
 
 export const data = {
   React: {

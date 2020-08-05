@@ -3,8 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import * as Permissions from 'expo-permissions'
 import * as Notifications from 'expo-notifications'
 
-const NOTIFICATION_KEY = '@FLASHCARDS:npi2'
-// '@FLASHCARDS:notifications'
+const NOTIFICATION_KEY = '@FLASHCARDS:notifications'
 
 export function clearLocalNotification () {
     return AsyncStorage.removeItem(NOTIFICATION_KEY)
