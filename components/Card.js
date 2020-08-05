@@ -28,6 +28,7 @@ class Card extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      card: {},
       showAnswer: false
     }
   }
@@ -37,13 +38,23 @@ class Card extends Component {
     this.setState({ showAnswer: !showAnswer })
   }
 
-  handleAnswerQuestion = () => {
-    
+  componentDidMount () { 
+    this.setState({ card: this.props.card })
   }
+
+  static getDerivedStateFromProps (props, state) {
+    if (state.card !== props.card) {
+        return { 
+          card: props.card,
+          showAnswer: false }
+    } else {
+        return null
+    } 
+  } 
 
   render () {
 
-    const { card, handleQuizState } = this.props
+    const { card } = this.props
     const { showAnswer } = this.state
     return (
       <View style={styles.quizCard}>
